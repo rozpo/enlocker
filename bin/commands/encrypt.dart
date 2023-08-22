@@ -12,13 +12,22 @@ class EncryptCommand extends Command {
 
   @override
   FutureOr? run() {
-    final plainText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit';
+    if (argResults!.rest.isEmpty) {
+      throw usageException(
+          'Need something to encrypt, try: enlocker encrypt "my secret"');
+    }
+
+    if (argResults!.rest.length > 1) {
+      throw usageException('Too many arguments for encrypt.');
+    }
+
+    final text = argResults!.rest.first;
     final key = Key.fromUtf8('my 32 length key................');
     final iv = IV.fromLength(16);
 
     final encrypter = Encrypter(AES(key));
 
-    final encrypted = encrypter.encrypt(plainText, iv: iv);
+    final encrypted = encrypter.encrypt(text, iv: iv);
     final decrypted = encrypter.decrypt(encrypted, iv: iv);
 
     print(decrypted);
