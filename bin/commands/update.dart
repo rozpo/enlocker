@@ -15,13 +15,34 @@ class UpdateCommand extends Command {
 
   @override
   FutureOr? run() {
+    final path = '.';
+
+    if (_isCorrectDirectory(path) == false) {
+      throw usageException(
+          "Invalid root directory of enlocker, path = '$path'");
+    }
+
     var cmd = Process.runSync(
-        'dart', ['pub', 'global', 'activate', '--source', 'path', '.']);
+        'dart', ['pub', 'global', 'activate', '--source', 'path', path]);
 
     if (cmd.exitCode == 0) {
       print(cmd.stdout);
     } else {
       print(cmd.stderr);
     }
+  }
+
+  bool _isCorrectDirectory(String path) {
+    bool result = false;
+    final pubspecFile = File('$path/pubspec.yaml');
+
+    try {
+      String value = pubspecFile.readAsStringSync();
+      if (value.contains('name: enlocker\n')) {
+        result = true;
+      }
+    } on FileSystemException catch (_) {}
+
+    return result;
   }
 }
