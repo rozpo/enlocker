@@ -26,6 +26,7 @@ class EncryptCommand extends Command {
       'Key:',
       hidden: true,
       required: true,
+      validator: Ask.lengthRange(32, 32),
     );
 
     final text = argResults!.rest.first;
