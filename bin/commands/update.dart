@@ -11,6 +11,9 @@ class UpdateCommand extends Command {
   String get description => 'Update to the latest version';
 
   @override
+  List<String> get aliases => ['upgrade'];
+
+  @override
   FutureOr? run() {
     var cmd = Process.runSync(
         'dart', ['pub', 'global', 'activate', '--source', 'path', '.']);
