@@ -1,9 +1,13 @@
+import 'dart:io';
+
+import 'package:args/command_runner.dart';
 import 'package:cli_completion/cli_completion.dart';
 
 import 'commands/update.dart';
 
 void main(List<String> args) {
-  EnlockerCli().run(args);
+  final cli = EnlockerCli();
+  cli.run(args).catchError(cli.handleExceptions);
 }
 
 class EnlockerCli extends CompletionCommandRunner {
@@ -13,5 +17,13 @@ class EnlockerCli extends CompletionCommandRunner {
           'Encryption capabilities for your sensitive data.',
         ) {
     addCommand(UpdateCommand());
+  }
+
+  void handleExceptions(dynamic error) {
+    if (error is! UsageException) {
+      throw error;
+    }
+    print(error);
+    exit(64);
   }
 }
