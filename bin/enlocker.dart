@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:args/command_runner.dart';
 import 'package:cli_completion/cli_completion.dart';
 
-import 'commands/decrypt.dart';
-import 'commands/encrypt.dart';
+import 'commands/crypt/decrypt.dart';
+import 'commands/crypt/encrypt.dart';
 import 'commands/update.dart';
 
 void main(List<String> args) {

@@ -1,10 +1,11 @@
 import 'dart:async';
 
-import 'package:args/command_runner.dart';
 import 'package:dcli/dcli.dart';
 import 'package:encrypt/encrypt.dart';
 
-class DecryptCommand extends Command {
+import 'crypt.dart';
+
+class DecryptCommand extends CryptCommand {
   @override
   String get name => 'decrypt';
 
