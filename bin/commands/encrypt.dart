@@ -33,11 +33,9 @@ class EncryptCommand extends Command {
     final iv = IV.fromLength(16);
 
     final encrypter = Encrypter(AES(Key.fromUtf8(key)));
-
     final encrypted = encrypter.encrypt(text, iv: iv);
-    final decrypted = encrypter.decrypt(encrypted, iv: iv);
 
-    print(decrypted);
+    print('######## Encrypted data ########');
     print(encrypted.base64);
   }
 }
