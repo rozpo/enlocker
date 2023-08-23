@@ -23,9 +23,14 @@ class EncryptCommand extends CryptCommand {
     final text = argResults!.rest.first;
     final iv = IV.fromLength(16);
 
-    final encrypter = Encrypter(AES(Key.fromUtf8(key)));
-    final encrypted = encrypter.encrypt(text, iv: iv);
+    try {
+      final encrypter = Encrypter(AES(Key.fromUtf8(key)));
+      final encrypted = encrypter.encrypt(text, iv: iv);
 
-    printOutput(encrypted.base64);
+      printOutput(encrypted.base64);
+    } catch (e) {
+      print(e);
+      print('Data cannot be encrypted');
+    }
   }
 }

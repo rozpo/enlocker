@@ -23,9 +23,14 @@ class DecryptCommand extends CryptCommand {
     final text = argResults!.rest.first;
     final iv = IV.fromLength(16);
 
-    final encrypter = Encrypter(AES(Key.fromUtf8(key)));
-    final decrypted = encrypter.decrypt(Encrypted.fromBase64(text), iv: iv);
+    try {
+      final encrypter = Encrypter(AES(Key.fromUtf8(key)));
+      final decrypted = encrypter.decrypt(Encrypted.fromBase64(text), iv: iv);
 
-    printOutput(decrypted);
+      printOutput(decrypted);
+    } catch (e) {
+      print(e);
+      print('Data cannot be decrypted');
+    }
   }
 }
