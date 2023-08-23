@@ -12,6 +12,9 @@ class DecryptCommand extends CryptCommand {
   String get description => 'Decrypt previously encrypted data.';
 
   @override
+  List<String> get aliases => ['unlock'];
+
+  @override
   FutureOr? run() {
     validateArgs(
       emptyArgs: 'Need something to decrypt, try: enlocker decrypt "my secret"',

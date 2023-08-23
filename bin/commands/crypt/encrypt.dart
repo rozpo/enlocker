@@ -12,6 +12,9 @@ class EncryptCommand extends CryptCommand {
   String get description => 'Encrypt your sensitive data.';
 
   @override
+  List<String> get aliases => ['lock'];
+
+  @override
   FutureOr? run() {
     validateArgs(
       emptyArgs: 'Need something to encrypt, try: enlocker encrypt "my secret"',
