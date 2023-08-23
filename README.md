@@ -19,7 +19,6 @@ enlocker
 The output should be something like this:
 
 ```
-> enlocker
 Encryption capabilities for your sensitive data.
 
 Usage: enlocker <command> [arguments]
@@ -28,10 +27,53 @@ Global options:
 -h, --help    Print this usage information.
 
 Available commands:
+  decrypt   Decrypt previously encrypted data.
   encrypt   Encrypt your sensitive data.
   update    Update to the latest version
 
 Run "enlocker help <command>" for more information about a command.
+```
+
+## Usage
+
+Enlocker provides two main commands: **encrypt** and **decrypt**. Commands can be used interchangeably with global options and flags:
+
+### Encryption
+
+To encrypt raw data invoke **encrypt** command:
+
+```
+enlocker encrypt "hello world"
+```
+
+```
+Key: ********************************
+Y4nvgE/h75UJX6xNoX+PtQ==
+```
+
+For encryption operation there is a **lock** alias avaliable.
+
+```
+enlocker lock "hello world"
+```
+
+### Decryption
+
+To decrypt raw data invoke **decrypt** command:
+
+```
+enlocker decrypt "Y4nvgE/h75UJX6xNoX+PtQ=="
+```
+
+```
+Key: ********************************
+hello world
+```
+
+For decryption operation there is a **unlock** alias avaliable.
+
+```
+enlocker unlock "Y4nvgE/h75UJX6xNoX+PtQ=="
 ```
 
 ## Security Considerations
