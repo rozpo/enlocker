@@ -13,14 +13,10 @@ class DecryptCommand extends CryptCommand {
 
   @override
   FutureOr? run() {
-    if (argResults!.rest.isEmpty) {
-      throw usageException(
-          'Need something to decrypt, try: enlocker decrypt "my secret"');
-    }
-
-    if (argResults!.rest.length > 1) {
-      throw usageException('Too many arguments for decrypt.');
-    }
+    validateArgs(
+      emptyArgs: 'Need something to decrypt, try: enlocker decrypt "my secret"',
+      tooManyArgsMsg: 'Too many arguments for decrypt.',
+    );
 
     final key = getKeyFromUser();
 

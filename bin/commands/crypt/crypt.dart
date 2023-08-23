@@ -14,4 +14,17 @@ abstract class CryptCommand extends Command {
   void printOutput(String output) {
     print(output);
   }
+
+  void validateArgs({
+    required String emptyArgs,
+    required String tooManyArgsMsg,
+  }) {
+    if (argResults!.rest.isEmpty) {
+      throw usageException(emptyArgs);
+    }
+
+    if (argResults!.rest.length > 1) {
+      throw usageException(tooManyArgsMsg);
+    }
+  }
 }

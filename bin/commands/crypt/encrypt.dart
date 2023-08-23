@@ -13,14 +13,10 @@ class EncryptCommand extends CryptCommand {
 
   @override
   FutureOr? run() {
-    if (argResults!.rest.isEmpty) {
-      throw usageException(
-          'Need something to encrypt, try: enlocker encrypt "my secret"');
-    }
-
-    if (argResults!.rest.length > 1) {
-      throw usageException('Too many arguments for encrypt.');
-    }
+    validateArgs(
+      emptyArgs: 'Need something to encrypt, try: enlocker encrypt "my secret"',
+      tooManyArgsMsg: 'Too many arguments for encrypt.',
+    );
 
     final key = getKeyFromUser();
 
