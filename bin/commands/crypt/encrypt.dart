@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:dcli/dcli.dart';
 import 'package:encrypt/encrypt.dart';
 
 import 'crypt.dart';
@@ -23,12 +22,7 @@ class EncryptCommand extends CryptCommand {
       throw usageException('Too many arguments for encrypt.');
     }
 
-    final key = ask(
-      'Key:',
-      hidden: true,
-      required: true,
-      validator: Ask.lengthRange(32, 32),
-    );
+    final key = getKeyFromUser();
 
     final text = argResults!.rest.first;
     final iv = IV.fromLength(16);
