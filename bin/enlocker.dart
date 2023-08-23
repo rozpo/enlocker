@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:args/command_runner.dart';
 import 'package:cli_completion/cli_completion.dart';
 
+import 'commands/decrypt.dart';
 import 'commands/encrypt.dart';
 import 'commands/update.dart';
 
@@ -17,6 +18,7 @@ class EnlockerCli extends CompletionCommandRunner {
           'enlocker',
           'Encryption capabilities for your sensitive data.',
         ) {
+    addCommand(DecryptCommand());
     addCommand(EncryptCommand());
     addCommand(UpdateCommand());
   }
