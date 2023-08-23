@@ -10,4 +10,8 @@ abstract class CryptCommand extends Command {
       validator: Ask.lengthRange(32, 32),
     );
   }
+
+  void printOutput(String output) {
+    print(output);
+  }
 }

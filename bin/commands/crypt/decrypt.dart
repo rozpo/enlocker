@@ -30,7 +30,6 @@ class DecryptCommand extends CryptCommand {
     final encrypter = Encrypter(AES(Key.fromUtf8(key)));
     final decrypted = encrypter.decrypt(Encrypted.fromBase64(text), iv: iv);
 
-    print('######## Decrypted data ########');
-    print(decrypted);
+    printOutput(decrypted);
   }
 }
