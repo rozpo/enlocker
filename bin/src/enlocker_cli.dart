@@ -1,5 +1,9 @@
-class EnlockerCli {
-  void run(List<String> arguments) {
-    print('Hello world!');
-  }
+import 'package:args/command_runner.dart';
+
+class EnlockerCli extends CommandRunner {
+  EnlockerCli()
+      : super(
+          'enlocker',
+          'Encryption capabilities for your sensitive data.',
+        );
 }
