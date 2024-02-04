@@ -1,0 +1,11 @@
+name: enlocker
+description: Dart CLI that provides encryption and decryption capabilities for your sensitive data.
+version: 0.1.0
+repository: https://github.com/rozpo/enlocker
+
+environment:
+  sdk: ^3.2.6
+
+dev_dependencies:
+  lints: ^2.1.0
+  test: ^1.24.0
